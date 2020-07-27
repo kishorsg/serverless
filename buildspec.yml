@@ -6,9 +6,9 @@ env:
     Organization: prod/sonar:Organization
     Project: prod/sonar:Project
 phases:
-  install:
-    runtime-versions:
-      java: corretto8
+  #install:
+   # runtime-versions:
+    #  java: corretto8
   pre_build:
     commands:
       - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.3.0.1492-linux.zip
@@ -16,7 +16,7 @@ phases:
       - export PATH=$PATH:/sonar-scanner-3.3.0.1492-linux/bin/
   build:
     commands:
-      - mvn clean install package  
+      - mvn clean package  
       - mvn sonar:sonar -Dsonar.login=$LOGIN -Dsonar.host.url=$HOST -Dsonar.projectKey=$Project -Dsonar.organization=$Organization
       - sleep 5
       - mv target/*.war my-web-app.war
@@ -33,7 +33,7 @@ reports:
       - '**/*'
     base-directory: 'target/surefire-reports'
     
-  JacocoReports:
-    files:
-      - '**/*'
-    base-directory: 'target/site/jacoco-both/*'
+  #JacocoReports:
+   # files:
+    #  - '**/*'
+    #base-directory: 'target/site/jacoco-both/*'
