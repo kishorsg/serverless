@@ -6,9 +6,9 @@ env:
     Organization: prod/sonar:Organization
     Project: prod/sonar:Project
 phases:
-  #install:
-   # runtime-versions:
-    #  java: corretto8
+  install:
+    runtime-versions:
+      java: corretto11
   pre_build:
     commands:
       - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.3.0.1492-linux.zip
